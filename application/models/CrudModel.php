@@ -38,6 +38,12 @@ class CrudModel extends CI_Model{
 		$this->db->where('DATE(keranjang_date_created)', date('Y-m-d'));
 		return $this->db->get()->result_array();
 	}
+
+	function get_pesanan($status){
+		$this->db->from('tb_transaksi');
+		$this->db->where('transaksi_status_pembayaran',$status);
+		return $this->db->get();
+	}
     
 }
 

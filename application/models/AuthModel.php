@@ -14,6 +14,7 @@ class AuthModel extends CI_Model{
 		$this->db->where('tb_user.user_username',$usrnm);
 		return $this->db->get();
 	}
+
 }
 
 

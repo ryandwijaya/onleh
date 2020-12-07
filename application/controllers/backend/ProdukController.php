@@ -1,16 +1,14 @@
 <?php
 
-defined('BASEPATH') OR exit('No direct script access allowed');
+defined('BASEPATH') or exit('No direct script access allowed');
 
 class ProdukController extends CI_Controller
 {
 	public function __construct()
 	{
 		parent::__construct();
-		$model = array('KategoriModel','ProdukModel');
-		$helper = array('nominal');
+		$model = array('KategoriModel', 'ProdukModel', 'CrudModel');
 		$this->load->model($model);
-		$this->load->helper($helper);
 	}
 
 	public function index()
@@ -54,7 +52,7 @@ class ProdukController extends CI_Controller
 				);
 
 				$simpan = $this->ProdukModel->tambah_produk($data);
-				if ($simpan > 0){
+				if ($simpan > 0) {
 					$this->session->set_flashdata('alert', 'success_post');
 					redirect('admin/produk');
 				} else {
@@ -75,7 +73,8 @@ class ProdukController extends CI_Controller
 		}
 	}
 
-	public function lihat($id){
+	public function lihat($id)
+	{
 		$data = array(
 			'title' => 'Lihat Data Produk | Neraca Multiscale',
 			'page_title' => 'Lihat Data Produk',
@@ -84,16 +83,18 @@ class ProdukController extends CI_Controller
 			'produk' => $this->ProdukModel->lihat_satu_produk($id)
 		);
 		$this->load->view('backend/templates/header', $data);
-		$this->load->view('backend/produk/lihat',$data);
+		$this->load->view('backend/produk/lihat', $data);
 		$this->load->view('backend/templates/footer');
 	}
 
-	public function update($id){
-		if (isset($_POST['update'])){
+	public function update($id)
+	{
+		if (isset($_POST['update'])) {
 			$nama = $this->input->post('nama');
 			$kategori = $this->input->post('kategori');
 			$deskripsi = $this->input->post('deskripsi');
 			$harga = $this->input->post('harga');
+			$stok = $this->input->post('stok');
 
 			$config['upload_path'] = './assets/upload/images/produk/';
 			$config['allowed_types'] = 'jpg|png|jpeg';
@@ -106,10 +107,11 @@ class ProdukController extends CI_Controller
 					'produk_kategori' => $kategori,
 					'produk_deskripsi' => $deskripsi,
 					'produk_harga' => $harga,
+					'produk_stok' => $stok,
 				);
 
-				$update = $this->ProdukModel->update_produk($id,$data);
-				if ($update > 0){
+				$update = $this->ProdukModel->update_produk($id, $data);
+				if ($update > 0) {
 					$this->session->set_flashdata('alert', 'success_change');
 					redirect('admin/produk');
 				} else {
@@ -124,11 +126,12 @@ class ProdukController extends CI_Controller
 					'produk_kategori' => $kategori,
 					'produk_deskripsi' => $deskripsi,
 					'produk_harga' => $harga,
+					'produk_stok' => $stok,
 					'produk_foto' => $foto
 				);
 
-				$update = $this->ProdukModel->update_produk($id,$data);
-				if ($update > 0){
+				$update = $this->ProdukModel->update_produk($id, $data);
+				if ($update > 0) {
 					$this->session->set_flashdata('alert', 'success_change');
 					redirect('admin/produk');
 				} else {
@@ -145,8 +148,33 @@ class ProdukController extends CI_Controller
 				'produk' => $this->ProdukModel->lihat_satu_produk($id)
 			);
 			$this->load->view('backend/templates/header', $data);
-			$this->load->view('backend/produk/update',$data);
+			$this->load->view('backend/produk/update', $data);
 			$this->load->view('backend/templates/footer');
+		}
+	}
+
+	public function tambah_stok()
+	{
+		if (isset($_POST['simpan'])) {
+			$new_stok = $this->input->post('stok');
+			$produk_id = $this->input->post('produk_id');
+			$produk = $this->ProdukModel->lihat_satu_produk($produk_id);
+			$current_stok = $produk['produk_stok'];
+
+			$total_stok = $current_stok + $new_stok;
+
+			$data = array(
+				'produk_stok' => $total_stok,
+			);
+//			var_dump($produk);exit();
+			$update = $this->ProdukModel->update_produk($produk_id, $data);
+			if ($update > 0) {
+				$this->session->set_flashdata('alert', 'success_change');
+				redirect('admin/produk');
+			} else {
+				$this->session->set_flashdata('alert', 'fail_edit');
+				redirect('admin/produk');
+			}
 		}
 	}
 }

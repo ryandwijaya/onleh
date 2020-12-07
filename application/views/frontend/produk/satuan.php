@@ -38,22 +38,36 @@
 											class="discounted-price text-success">Rp. <?= nominal($produk['produk_harga']) ?></span>
 								</p>
 
-								<p class="single-info">Product Code: <span class="value">CODE123</span></p>
-								<p class="single-info">Availability: <span class="value">In Stock</span></p>
+								<?php if ($produk['produk_stok'] > 0): ?>
+								<h5 class="single-info">Stok: <span class="value text-success"><?= $produk['produk_stok'] ?></span></h5>
+								<?php else: ?>
+									<h5 class="single-info">Stok: <span class="value text-danger"><?= $produk['produk_stok'] ?></span></h5>
 
+								<?php endif; ?>
 								<p class="product-description"><?= $produk['produk_deskripsi'] ?></p>
 
 								<!-- <div class="product-countdown" data-countdown="2019/09/01"></div> -->
 								<div class="product-actions">
-										<div class="quantity-selection">
-											<label>Qty</label>
-											<form action="<?= base_url() ?>ajax/add-keranjang" method="post">
-											<input type="hidden" name="id_produk" id="id-produk" value="<?= $produk_id ?>">
-											<input type="hidden" name="id_user" id="id-user" value="<?= $this->session->userdata('session_id') ?>">
+									<div class="quantity-selection">
+										<label>Qty</label>
+										<form action="<?= base_url() ?>ajax/add-keranjang" method="post">
+											<input type="hidden" name="id_produk" id="id-produk"
+												   value="<?= $produk_id ?>">
+											<input type="hidden" name="id_user" id="id-user"
+												   value="<?= $this->session->userdata('session_id') ?>">
 											<input type="number" name="jumlah_beli" id="jumlah-beli" value="1" min="1">
-											<button  id="btn-keranjang" class="btn cart-btn" name="submit" type="submit"> <i class="ion-plus"></i> KERANJANG</button>
-											</form>
-										</div>
+
+											<?php if ($produk['produk_stok'] > 0): ?>
+											<button id="btn-keranjang" class="btn cart-btn" name="submit" type="submit">
+												<i class="ion-plus"></i> KERANJANG
+											</button>
+											<?php else: ?>
+												<button id="btn-keranjang" class="btn cart-btn" type="button" onclick="return alert('Mohon Maaf Stok Sedang Kosong!')">
+													<i class="ion-plus"></i> KERANJANG
+												</button>
+											<?php endif; ?>
+										</form>
+									</div>
 								</div>
 
 							</div>

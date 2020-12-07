@@ -69,6 +69,17 @@
 				   placeholder="Harga" required value="<?=$produk['produk_harga']?>" autocomplete="off">
 		</div>
 	</div>
+	<hr class="border-dashed my-8">
+
+	<div class="form-row">
+		<label class="col-md-2 col-sm-3 col-form-label text-sm-right"
+			   for="normal-input-1">Stok</label>
+
+		<div class="col-md-10 col-sm-9">
+			<input type="number" class="form-control" id="normal-input-1" name="stok"
+				   placeholder="Stok" required value="<?=$produk['produk_stok']?>" autocomplete="off">
+		</div>
+	</div>
 	<!-- /form row -->
 
 	<!-- Separator -->

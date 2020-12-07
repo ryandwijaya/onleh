@@ -19,7 +19,13 @@ class KeranjangModel extends CI_Model {
 		$query = $this->db->get();
 		return $query->result_array();
 	}
-
+	public function lihat_keranjang_by_transaksi($id_transaksi){
+		$this->db->select('*');
+		$this->db->from('tb_keranjang');
+		$this->db->where('keranjang_id_transaksi',$id_transaksi);
+		$query = $this->db->get();
+		return $query->result_array();
+	}
 
 	function insertGetId($data){
 		$this->db->insert('tb_transaksi',$data);

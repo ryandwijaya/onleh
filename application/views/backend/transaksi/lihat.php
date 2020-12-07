@@ -25,6 +25,16 @@
 			</div>
 			<!-- /media body -->
 		</div>
+
+		<div class="media mb-5">
+			<i class="icon icon-mail icon-xl mr-5"></i>
+			<!-- Media Body -->
+			<div class="media-body">
+				<span class="d-block text-light-gray f-12 mb-1">Nomor HP Penerima</span>
+				<a href="javascript:void(0)"><?= $keranjang[0]['user_hp'] ?></a>
+			</div>
+			<!-- /media body -->
+		</div>
 		<div class="media mb-5">
 			<i class="icon icon-mail icon-xl mr-5"></i>
 			<!-- Media Body -->

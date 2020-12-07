@@ -50,7 +50,7 @@
                                     <li class="menu-item-has-children"><a href="blog-left-sidebar.html">KATEGORI PRODUK</a>
                                         <ul class="sub-menu" style="width: 200px;">
 											<?php foreach ($kategori as $ktg ): ?>
-                                            <li><a href="#"><?= $ktg['kategori_nama'] ?></a></li>
+                                            <li><a href="<?= base_url() ?>produk/kategori/<?= $ktg['kategori_id'] ?>"><?= $ktg['kategori_nama'] ?></a></li>
 											<?php endforeach; ?>
 										</ul>
                                     </li>
@@ -86,7 +86,7 @@
                                             <div class="single-settings-block">
                                                 <h4 class="title">MY ACCOUNT </h4>
                                                 <ul>
-                                                    <li><a href="<?= base_url() ?>login">Register</a></li>
+                                                    <li><a href="<?= base_url() ?>register">Register</a></li>
                                                     <li><a href="<?= base_url() ?>admin">Login</a></li>
                                                 </ul>
                                             </div>
@@ -99,38 +99,7 @@
                     </div>
                     <!--=======  End of header wrapper  =======-->
 
-                    <!--=======  mobile navigation area  =======-->
-
-                    <div class="header-mobile-navigation d-block d-lg-none">
-                        <div class="row align-items-center">
-                            <div class="col-6 col-md-6">
-                                <div class="header-logo">
-                                    <a href="index.html">
-                                        <img src="<?= base_url() ?>assets/frontend/img/logo.png" class="img-fluid" alt="" width="80%">
-                                    </a>
-                                </div>
-                            </div>
-                            <div class="col-6 col-md-6">
-                                <div class="mobile-navigation text-right">
-                                    <div class="header-icon-wrapper">
-                                        <ul class="icon-list justify-content-end">
-                                            <li>
-                                                <div class="header-cart-icon">
-                                                    <a href="cart.html">
-                                                        <i class="ion-bag"></i>
-                                                        <span class="counter">3</span>
-                                                    </a>
-                                                </div>
-                                            </li>
-                                            <li>
-                                                <a href="javascript:void(0)" class="mobile-menu-icon" id="mobile-menu-trigger"><i class="fa fa-bars"></i></a>
-                                            </li>
-                                        </ul>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                  
 
                     <!--=======  End of mobile navigation area  =======-->
 
@@ -142,15 +111,44 @@
 
    <div class="page-content-area">
         <div class="container mt-5">
-            <?php if ($this->session->flashdata('alert') == 'success_mail') { ?>
+            <?php if ($this->session->flashdata('alert') == 'berhasil_keranjang') { ?>
                 <div class="row">
                 <div class="col-md-12">
                     <div class="alert alert-success hide-it">
-                        <span>SUSKES!! Pesan anda sudah terkirim, kami akan merespon pesan anda melalui email. Pastikan email yang tertera adalah email aktif, Thx.</span>
+                        <span>SUKSES!! Berhasil memasukkan ke keranjang.</span>
                     </div>
                 </div>
             </div>
             <?php } ?>
+			<?php if ($this->session->flashdata('alert') == 'berhasil_register') { ?>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="alert alert-success hide-it">
+							<span>SUKSES!! Berhasil mendaftar akun.</span>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
+
+			<?php if ($this->session->flashdata('alert') == 'gagal_register') { ?>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="alert alert-danger hide-it">
+							<span>GAGAL!! Gagal mendaftar akun, silahkan coba lagi.</span>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
+
+			<?php if ($this->session->flashdata('alert') == 'stok_melebihi') { ?>
+				<div class="row">
+					<div class="col-md-12">
+						<div class="alert alert-danger hide-it">
+							<span>GAGAL!! Pesanan kamu melebihi stok yang ada.</span>
+						</div>
+					</div>
+				</div>
+			<?php } ?>
             
 
             

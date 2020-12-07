@@ -8,7 +8,7 @@
 <meta charset="utf-8">
 <meta http-equiv="X-UA-Compatible" content="IE=edge">
 <!-- /meta tags -->
-<title>Login - Neraca MultiScale</title>
+<title>Login - Nadhira Napoleon</title>
 
 <!-- Site favicon -->
 <link rel="shortcut icon" href="<?= base_url() ?>assets/backend/images/favicon.ico" type="image/x-icon">
@@ -60,8 +60,6 @@
                     </div>
 
 
-            W
-
                 </div>
                 <!-- /login background section -->
 
@@ -73,7 +71,11 @@
 
                         <!-- Form -->
                         <form action="<?= base_url() ?>auth/login" method="post">
-
+							<?php if ($produk != null){ ?>
+								<input type="hidden" name="produk" value="<?= $produk ?>">
+							<?php }else{  ?>
+								<input type="hidden">
+							<?php } ?>
                             <!-- Form Group -->
                             <div class="form-group">
                                 <label class="sr-only" for="email-1">Username / NIK</label>

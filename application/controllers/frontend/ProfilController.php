@@ -19,6 +19,7 @@ class ProfilController extends CI_Controller
 			'page_title' => 'Data Produk',
 			'icon_title' => 'fa-balance-scale',
 			'kategori' => $this->KategoriModel->lihat_kategori(),
+			'keranjang' => $this->KeranjangModel->lihat_keranjang($this->session->userdata('session_id')),
 		);
 		$this->load->view('frontend/templates/header', $data);
 		$this->load->view('frontend/profil/index',$data);

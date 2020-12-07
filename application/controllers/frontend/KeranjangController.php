@@ -96,7 +96,8 @@ class KeranjangController extends CI_Controller
 				$update = $this->KeranjangModel->updateTransaksi($kode,$data);
 				$updateKeranjang = $this->KeranjangModel->updateKeranjang($transaksi['transaksi_id_user'],$keranjang);
 				if ($update > 0){
-					echo 'Berhasil ';
+					$this->session->set_flashdata('alert', 'berhasil_upload');
+					redirect('pembayaran/'.$kode);
 				} else {
 					echo 'Gagal';
 				}

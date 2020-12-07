@@ -14,6 +14,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['admin/produk/tambah'] = 'backend/ProdukController/tambah';
 	$route['admin/produk/lihat/(:any)'] = 'backend/ProdukController/lihat/$1';
 	$route['admin/produk/update/(:any)'] = 'backend/ProdukController/update/$1';
+	$route['admin/produk/tambah-stok'] = 'backend/ProdukController/tambah_stok';
 	$route['admin/produk/hapus/(:any)'] = 'backend/ProdukController/hapus/$1';
 
 	$route['admin/transaksi'] = 'backend/TransaksiController';
@@ -30,8 +31,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	//frontend
 			$route['profil'] = 'frontend/ProfilController/index';
 
+
 			//produk
 			$route['produk/(:any)'] = 'frontend/ProductController/produk/$1';
+			$route['produk/kategori/(:any)'] = 'frontend/ProductController/produk_by_kategori/$1';
 
 			//keranjang
 			$route['keranjang/(:any)'] = 'frontend/KeranjangController/index/$1';
@@ -49,6 +52,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
   	//default
 
   	$route['login'] = 'AuthController/index';
+  	$route['register'] = 'AuthController/register';
   	$route['logout'] = 'AuthController/logout';
   	$route['auth/login'] = 'AuthController/login';
   	$route['default_controller'] = 'Welcome';

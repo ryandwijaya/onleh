@@ -10,6 +10,8 @@ class DashboardController extends CI_Controller
 		if ($this->session->userdata('session_id') === '' || $this->session->userdata('session_id') == null) {
 			redirect(base_url('login'), 'refresh');
 		}
+		$model = array('KategoriModel', 'ProdukModel', 'CrudModel');
+		$this->load->model($model);
     }
     public function index()
     {
