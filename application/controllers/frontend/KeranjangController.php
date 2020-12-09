@@ -14,19 +14,35 @@ class KeranjangController extends CI_Controller
 		$this->load->model('CrudModel');
 	}
 
-	public function index($id)
+	public function index($id = '')
 	{
-		$data = array(
-			'page_title' => 'Keranjang',
-			'icon_title' => 'fa-balance-scale',
-			'keranjang' => $this->KeranjangModel->lihat_keranjang($id),
-			'kategori' => $this->KategoriModel->lihat_kategori(),
-			'id_user' => $id,
-		);
+		if(!empty($id)){
+			$data = array(
+				'page_title' => 'Keranjang',
+				'icon_title' => 'fa-balance-scale',
+				'keranjang' => $this->KeranjangModel->lihat_keranjang($id),
+				'kategori' => $this->KategoriModel->lihat_kategori(),
+				'id_user' => $id,
+			);
 //		var_dump($data['keranjang']);exit();
-		$this->load->view('frontend/templates/header', $data);
-		$this->load->view('frontend/keranjang/index',$data);
-		$this->load->view('frontend/templates/footer');
+			$this->load->view('frontend/templates/header', $data);
+			$this->load->view('frontend/keranjang/index',$data);
+			$this->load->view('frontend/templates/footer');
+		}else{
+			$data = array(
+				'page_title' => 'Keranjang',
+				'icon_title' => 'fa-balance-scale',
+				'keranjang' => null,
+				'kategori' => $this->KategoriModel->lihat_kategori(),
+				'id_user' => $id,
+			);
+//		var_dump($data['keranjang']);exit();
+			$this->load->view('frontend/templates/header', $data);
+			$this->load->view('frontend/keranjang/index',$data);
+			$this->load->view('frontend/templates/footer');
+		}
+
+
 	}
 	public function hapus($id,$user){
 		$hapus = $this->CrudModel->delete('keranjang_id',$id,'tb_keranjang');
@@ -129,7 +145,6 @@ class KeranjangController extends CI_Controller
 			$this->load->view('frontend/keranjang/cek_pembayaran');
 			$this->load->view('frontend/templates/footer');
 		}
-
 	}
 
 }

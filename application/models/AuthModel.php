@@ -15,6 +15,13 @@ class AuthModel extends CI_Model{
 		return $this->db->get();
 	}
 
+	public function get_by_email($email){
+		$this->db->select('*');
+		$this->db->from('tb_user');
+		$this->db->where('tb_user.user_email',$email);
+		return $this->db->get();
+	}
+
 }
 
 

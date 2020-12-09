@@ -28,6 +28,8 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['admin/pembayaran/konfirmasi/(:any)'] = 'backend/TransaksiController/konfirmasi/$1';
 	$route['admin/pembayaran/tolak/(:any)'] = 'backend/TransaksiController/tolak/$1';
 
+	$route['admin/profil'] = 'backend/ProfilController';
+
 	//frontend
 			$route['profil'] = 'frontend/ProfilController/index';
 
@@ -37,11 +39,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			$route['produk/kategori/(:any)'] = 'frontend/ProductController/produk_by_kategori/$1';
 
 			//keranjang
-			$route['keranjang/(:any)'] = 'frontend/KeranjangController/index/$1';
+			$route['keranjang/?(:any)?'] = 'frontend/KeranjangController/index/$1';
 			$route['pembayaran/(:any)'] = 'frontend/KeranjangController/pembayaran/$1';
 			$route['cek-pembayaran'] = 'frontend/KeranjangController/cek_pembayaran';
 			$route['checkout/(:any)'] = 'frontend/KeranjangController/checkout/$1';
 			$route['keranjang/hapus/(:any)/(:any)'] = 'frontend/KeranjangController/hapus/$1/$2';
+			$route['pesanan'] = 'frontend/PesananController/index';
+			$route['pesanan/detail/(:any)'] = 'frontend/PesananController/detail/$1';
 
 
 			//ajax
@@ -53,6 +57,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 
   	$route['login'] = 'AuthController/index';
   	$route['register'] = 'AuthController/register';
+  	$route['change-password'] = 'AuthController/changePassword';
   	$route['logout'] = 'AuthController/logout';
   	$route['auth/login'] = 'AuthController/login';
   	$route['default_controller'] = 'Welcome';

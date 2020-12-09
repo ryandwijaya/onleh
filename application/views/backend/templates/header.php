@@ -163,7 +163,7 @@ $pesanan_menunggu = $this->CrudModel->get_pesanan('menunggu')->result_array();
 						</li>
 						<?php if ($this->session->userdata('session_level') != 'pelanggan'): ?>
 						<li class="dt-side-nav__item">
-							<a href="<?= base_url() ?>profil" class="dt-side-nav__link" title="Dashboard"> <i
+							<a href="<?= base_url() ?>admin/profil" class="dt-side-nav__link" title="Dashboard"> <i
 										class="icon icon-user icon-fw icon-lg"></i> <span class="dt-side-nav__text">Profil</span>
 							</a>
 						</li>
@@ -182,10 +182,6 @@ $pesanan_menunggu = $this->CrudModel->get_pesanan('menunggu')->result_array();
 								<span class="dt-side-nav__text">Data Produk</span> </a>
 						</li>
 
-						<li class="dt-side-nav__item dt-side-nav__header">
-							<span class="dt-side-nav__text">Website</span>
-						</li>
-
 
 						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'banner') echo 'open' ?>">
 							<a href="<?= base_url('admin/banner') ?>"
@@ -194,6 +190,11 @@ $pesanan_menunggu = $this->CrudModel->get_pesanan('menunggu')->result_array();
 								<span class="dt-side-nav__text">Data Banner</span> </a>
 						</li>
 						<?php endif; ?>
+
+						<li class="dt-side-nav__item dt-side-nav__header">
+							<span class="dt-side-nav__text">Transaksi </span>
+						</li>
+
 
 						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'transaksi') echo 'open' ?>">
 							<a href="<?= base_url('admin/transaksi') ?>"
@@ -204,7 +205,14 @@ $pesanan_menunggu = $this->CrudModel->get_pesanan('menunggu')->result_array();
 								<span class="badge badge-warning badge-sm"><?= count($pesanan_menunggu) ?></span> </a>
 								<?php endif; ?>
 						</li>
-
+						<?php if ($this->session->userdata('session_level') != 'pelanggan'): ?>
+						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'laporan') echo 'open' ?>">
+							<a href="<?= base_url('admin/laporan') ?>"
+							   class="dt-side-nav__link" title="Banner"> <i
+										class="fa fa-file icon-fw icon-lg"></i>
+								<span class="dt-side-nav__text">Laporan</span> </a>
+						</li>
+						<?php endif; ?>
 
 						<li class="dt-side-nav__item dt-side-nav__header">
 						</li>

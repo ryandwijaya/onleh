@@ -13,6 +13,7 @@
 
 							<span class="cart-table table-responsive">
 									<table class="table">
+										<?php if ($keranjang != null): ?>
 										<thead>
 										<tr>
 											<th class="pro-thumbnail">Gambar</th>
@@ -24,9 +25,7 @@
 										</tr>
 										</thead>
 										<tbody>
-										<?php
-										$total = 0;
-										foreach ($keranjang as $item): ?>
+										<?php $total = 0; foreach ($keranjang as $item): ?>
 											<tr>
 											<td class="pro-thumbnail"><img
 														src="<?= base_url() ?>assets/upload/images/produk/<?= $item['produk_foto'] ?>"
@@ -44,7 +43,10 @@
 										</tr>
 											<?php
 											$total = $total + $item['keranjang_total'];
-										endforeach; ?>
+											endforeach; ?>
+										<?php else: ?>
+										<h6 class="text-center p-2">Keranjang Kosong</h6>
+										<?php endif; ?>
 										</tbody>
 									</table>
 					</div>
@@ -58,10 +60,14 @@
 							<!--=======  Calculate Shipping  =======-->
 
 							<div class="calculate-shipping">
-								<h4>Masukkan Alamat Pengiriman</h4>
+								<?php if ($keranjang != null): ?>
+
+									<h4>Masukkan Alamat Pengiriman</h4>
 								<textarea name="alamat" required class="form-control"
 										  placeholder="Masukkan Alamat .."></textarea>
 								<input type="hidden" name="total_bayar" value="<?= $total ?>">
+								<?php endif; ?>
+
 							</div>
 
 							<!--=======  End of Calculate Shipping  =======-->
@@ -76,15 +82,19 @@
 
 						<div class="col-lg-6 col-12 d-flex">
 							<!--=======  Cart summery  =======-->
+							<?php if ($keranjang != null): ?>
 
 							<div class="cart-summary">
 								<div class="cart-summary-wrap">
 									<h2>TOTAL BAYAR <span>Rp. <?= nominal($total) ?> ,-</span></h2>
+
 								</div>
 								<div class="cart-summary-button">
 									<button class="checkout-btn" name="bayar" type="submit">Checkout</button>
 								</div>
 							</div>
+							<?php endif; ?>
+
 
 							<!--=======  End of Cart summery  =======-->
 

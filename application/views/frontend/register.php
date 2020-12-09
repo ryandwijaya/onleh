@@ -7,6 +7,10 @@
 
 				<div class="row">
 					<div class="col-md-12 mb-20">
+						<label>Email*</label>
+						<input type="email" name="email" required placeholder="Masukkan Email">
+					</div>
+					<div class="col-md-12 mb-20">
 						<label>Username*</label>
 						<input type="text" name="username" required placeholder="Masukkan Username">
 					</div>
@@ -21,13 +25,14 @@
 
 					<div class="col-md-6 mb-20">
 						<label>Password</label>
-						<input type="password" name="password" required placeholder="Masukkan Password">
+						<input type="password" name="password" class="form-password" required placeholder="Masukkan Password">
 					</div>
 					<div class="col-md-6 mb-20">
 						<label>Confirm Password</label>
-						<input type="password" name="repassword" required placeholder="Confirm Password">
+						<input type="password" name="repassword" class="form-password" required placeholder="Confirm Password">
 					</div>
 					<div class="col-12">
+						<input type="checkbox" class="form-checkbox"> Show Password
 						<button class="register-button mt-0 float-right" type="submit" name="daftar">Register</button>
 					</div>
 				</div>

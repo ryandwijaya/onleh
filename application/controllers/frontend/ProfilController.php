@@ -20,6 +20,7 @@ class ProfilController extends CI_Controller
 			'icon_title' => 'fa-balance-scale',
 			'kategori' => $this->KategoriModel->lihat_kategori(),
 			'keranjang' => $this->KeranjangModel->lihat_keranjang($this->session->userdata('session_id')),
+			'profil' => $this->CrudModel->view_data_by_id(1,'profil_id','tb_profil'),
 		);
 		$this->load->view('frontend/templates/header', $data);
 		$this->load->view('frontend/profil/index',$data);

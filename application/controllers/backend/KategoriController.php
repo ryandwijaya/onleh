@@ -7,7 +7,7 @@ class KategoriController extends CI_Controller{
 	public function __construct()
     {
         parent::__construct();
-        $model = array('KategoriModel');
+        $model = array('KategoriModel','CrudModel');
 		$this->load->model($model);
     }
 

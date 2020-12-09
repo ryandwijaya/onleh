@@ -6,7 +6,7 @@
 				<!-- About Image -->
 				<div class="col-lg-6">
 					<div class="about-image">
-						<img src="<?= base_url() ?>assets/upload/images/profil/profil.jpg" class="img-fluid" alt="">
+						<img src="<?= base_url() ?>assets/upload/images/profil/<?= $profil['profil_gambar'] ?>" class="img-fluid" alt="">
 					</div>
 				</div>
 
@@ -14,8 +14,10 @@
 				<div class="about-content col-lg-6">
 					<div class="row">
 						<div class="col-12">
-							<h1>Nadhira Napoleon Pekanbaru</span></h1>
-							<p class="mb-3">Lorem ipsum dolor sit amet, consectetur adipisicing elit. Ad aspernatur atque, beatae, blanditiis deserunt doloremque excepturi in itaque iusto, laudantium minus natus provident quo sunt voluptatibus? Ducimus illo ipsa quisquam.</p>
+							<h1 class="text-uppercase"><?= $profil['profil_nama'] ?></span></h1>
+							<h3 class="text-uppercase">Alamat : <?= $profil['profil_alamat'] ?></span></h3>
+							<h4 class="text-uppercase">TGL Berdiri : <?= $profil['profil_tgl_berdiri'] ?></span></h4>
+							<p class="mb-3"><?= $profil['profil_deskripsi'] ?></p>
 						</div>
 
 
