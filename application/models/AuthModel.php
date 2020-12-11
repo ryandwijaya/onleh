@@ -14,6 +14,12 @@ class AuthModel extends CI_Model{
 		$this->db->where('tb_user.user_username',$usrnm);
 		return $this->db->get();
 	}
+	public function get_akun(){
+		$this->db->select('*');
+		$this->db->from('tb_user');
+		$this->db->where('user_level != ','pelanggan');
+		return $this->db->get()->result_array();
+	}
 
 	public function get_by_email($email){
 		$this->db->select('*');

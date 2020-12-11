@@ -20,6 +20,13 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 	$route['admin/transaksi'] = 'backend/TransaksiController';
 	$route['admin/transaksi/lihat/(:any)'] = 'backend/TransaksiController/lihat/$1';
 
+	$route['admin/laporan'] = 'backend/LaporanController';
+
+	$route['admin/akun'] = 'backend/AkunController';
+	$route['admin/akun/tambah'] = 'backend/AkunController/tambah';
+	$route['admin/akun/hapus/(:any)'] = 'backend/AkunController/hapus/$1';
+
+
 	$route['admin/banner'] = 'backend/BannerController';
 	$route['admin/banner/tambah'] = 'backend/BannerController/tambah';
 	$route['admin/banner/update/(:any)'] = 'backend/BannerController/update/$1';
@@ -51,6 +58,10 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 			//ajax
 //	$route['ajax/add-keranjang/(:any)/(:any)/(:any)'] = 'AjaxController/add_keranjang/$1/$2/$3';
 	$route['ajax/add-keranjang'] = 'AjaxController/add_keranjang';
+
+	$route['ajax/provinsi'] = 'AjaxController/getProvinsi';
+	$route['ajax/kota/(:any)'] = 'AjaxController/getKota/$1';
+	$route['ajax/ongkir/(:any)/(:any)'] = 'AjaxController/getOngkir/$1/$2';
 
   	
   	//default

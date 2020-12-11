@@ -25,7 +25,7 @@
 
                                         <div class="copyright-text">
 
-                                            Copyright &copy; 2019 <a href="http://wikidevia.digtive.id/" target="_blank">Digtive Developer</a>. All Rights Reserved.
+                                            Copyright &copy; <?= date('Y') ?> <a href="#" target="_blank">Astri</a>. All Rights Reserved.
                                         </div>
                                     </div>
                                     <div class="col-lg-3 col-md-5">
@@ -86,6 +86,7 @@
     <!-- Active JS -->
     <script src="<?= base_url() ?>assets/frontend/js/active.js"></script>
     <script src="<?= base_url() ?>assets/frontend/js/produk/add-keranjang.js"></script>
+    <script src="<?= base_url() ?>assets/frontend/js/rajaongkir/daerah.js"></script>
     <!--=====  End of JS files ======-->
 	 <script src="https://cdnjs.cloudflare.com/ajax/libs/Dropify/0.2.2/js/dropify.min.js"></script>
     <script>

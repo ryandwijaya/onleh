@@ -161,69 +161,75 @@ $pesanan_menunggu = $this->CrudModel->get_pesanan('menunggu')->result_array();
 										class="icon icon-home icon-fw icon-lg"></i> <span class="dt-side-nav__text">Dashboard</span>
 							</a>
 						</li>
-						<?php if ($this->session->userdata('session_level') != 'pelanggan'): ?>
-						<li class="dt-side-nav__item">
-							<a href="<?= base_url() ?>admin/profil" class="dt-side-nav__link" title="Dashboard"> <i
-										class="icon icon-user icon-fw icon-lg"></i> <span class="dt-side-nav__text">Profil</span>
-							</a>
-						</li>
-						<li class="dt-side-nav__item dt-side-nav__header">
-							<span class="dt-side-nav__text">Data </span>
-						</li>
-						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'kategori') echo 'open' ?>">
-							<a href="<?= base_url('admin/kategori') ?>"
-							   class="dt-side-nav__link" title="Kategori"> <i class="fa fa-list icon-fw icon-lg"></i>
-								<span class="dt-side-nav__text">Data Kategori</span> </a>
-						</li>
-						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'produk') echo 'open' ?>">
-							<a href="<?= base_url('admin/produk') ?>"
-							   class="dt-side-nav__link" title="Produk"> <i
-										class="fa fa-cube icon-fw icon-lg"></i>
-								<span class="dt-side-nav__text">Data Produk</span> </a>
-						</li>
+						<?php if ($this->session->userdata('session_level') == 'admin'): ?>
+							<li class="dt-side-nav__item">
+								<a href="<?= base_url() ?>admin/profil" class="dt-side-nav__link" title="Dashboard"> <i
+											class="icon icon-user icon-fw icon-lg"></i> <span class="dt-side-nav__text">Profil</span>
+								</a>
+							</li>
+							<li class="dt-side-nav__item dt-side-nav__header">
+								<span class="dt-side-nav__text">Data </span>
+							</li>
+							<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'kategori') echo 'open' ?>">
+								<a href="<?= base_url('admin/kategori') ?>"
+								   class="dt-side-nav__link" title="Kategori"> <i
+											class="fa fa-list icon-fw icon-lg"></i>
+									<span class="dt-side-nav__text">Data Kategori</span> </a>
+							</li>
+							<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'produk') echo 'open' ?>">
+								<a href="<?= base_url('admin/produk') ?>"
+								   class="dt-side-nav__link" title="Produk"> <i
+											class="fa fa-cube icon-fw icon-lg"></i>
+									<span class="dt-side-nav__text">Data Produk</span> </a>
+							</li>
 
 
-						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'banner') echo 'open' ?>">
-							<a href="<?= base_url('admin/banner') ?>"
-							   class="dt-side-nav__link" title="Banner"> <i
-										class="fa fa-picture-o icon-fw icon-lg"></i>
-								<span class="dt-side-nav__text">Data Banner</span> </a>
-						</li>
+							<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'banner') echo 'open' ?>">
+								<a href="<?= base_url('admin/banner') ?>"
+								   class="dt-side-nav__link" title="Banner"> <i
+											class="fa fa-picture-o icon-fw icon-lg"></i>
+									<span class="dt-side-nav__text">Data Banner</span> </a>
+							</li>
 						<?php endif; ?>
 
-						<li class="dt-side-nav__item dt-side-nav__header">
-							<span class="dt-side-nav__text">Transaksi </span>
-						</li>
+						<?php if ($this->session->userdata('session_level') == 'admin'): ?>
+
+							<li class="dt-side-nav__item dt-side-nav__header">
+								<span class="dt-side-nav__text">Transaksi </span>
+							</li>
 
 
-						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'transaksi') echo 'open' ?>">
-							<a href="<?= base_url('admin/transaksi') ?>"
-							   class="dt-side-nav__link" title="Transaksi"> <i
-										class="fa fa-money icon-fw icon-lg"></i>
-								<span class="dt-side-nav__text">Pesanan</span>
-								<?php if ($this->session->userdata('session_level') == 'admin'): ?>
-								<span class="badge badge-warning badge-sm"><?= count($pesanan_menunggu) ?></span> </a>
+							<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'transaksi') echo 'open' ?>">
+								<a href="<?= base_url('admin/transaksi') ?>"
+								   class="dt-side-nav__link" title="Transaksi"> <i
+											class="fa fa-money icon-fw icon-lg"></i>
+									<span class="dt-side-nav__text">Pesanan</span>
+									<?php if ($this->session->userdata('session_level') == 'admin'): ?>
+									<span class="badge badge-warning badge-sm"><?= count($pesanan_menunggu) ?></span>
+								</a>
 								<?php endif; ?>
-						</li>
-						<?php if ($this->session->userdata('session_level') != 'pelanggan'): ?>
-						<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'laporan') echo 'open' ?>">
-							<a href="<?= base_url('admin/laporan') ?>"
-							   class="dt-side-nav__link" title="Banner"> <i
-										class="fa fa-file icon-fw icon-lg"></i>
-								<span class="dt-side-nav__text">Laporan</span> </a>
-						</li>
+							</li>
 						<?php endif; ?>
 
-						<li class="dt-side-nav__item dt-side-nav__header">
-						</li>
-						<li class="dt-side-nav__item">
-							<a href="<?= base_url() ?>logout"
-							   onclick="return confirm('yakin ingin keluar dari sistem ?')" class="dt-side-nav__link"
-							   title="Cuti"> <i class="icon icon-power-off icon-fw icon-lg"></i>
-								<span class="dt-side-nav__text">Logout</span> </a>
-						</li>
-						<!-- /menu item -->
+						<?php if ($this->session->userdata('session_level') != 'pelanggan'): ?>
+							<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'laporan') echo 'open' ?>">
+								<a href="<?= base_url('admin/laporan') ?>"
+								   class="dt-side-nav__link" title="Banner"> <i
+											class="fa fa-file icon-fw icon-lg"></i>
+									<span class="dt-side-nav__text">Laporan</span> </a>
+							</li>
 
+						<?php endif; ?>
+
+						<?php if ($this->session->userdata('session_level') == 'owner'): ?>
+							<!-- /menu item -->
+							<li class="dt-side-nav__item <?php if ($this->uri->segment(2) == 'akun') echo 'open' ?>">
+								<a href="<?= base_url('admin/akun') ?>"
+								   class="dt-side-nav__link" title="Banner"> <i
+											class="fa fa-user icon-fw icon-lg"></i>
+									<span class="dt-side-nav__text">Akun</span> </a>
+							</li>
+						<?php endif; ?>
 
 						<!-- /menu item -->
 

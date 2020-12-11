@@ -1,6 +1,6 @@
 </div>
 <footer class="dt-footer">
-  Copyright  - <a href="http://wikidevia.digtive.id/" target="_blank"> Digtive</a>-  © 2019
+  Copyright  - <a href="http://wikidevia.digtive.id/" target="_blank"> Astri</a>-  © <?= date('Y') ?>
 </footer>
 <!-- /footer -->
             </div>

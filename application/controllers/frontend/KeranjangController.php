@@ -63,6 +63,10 @@ class KeranjangController extends CI_Controller
 					'transaksi_kode' => $kode,
 					'transaksi_id_user' => $id,
 					'transaksi_total' => $this->input->post('total_bayar'),
+					'transaksi_sub_total' => $this->input->post('sub_total'),
+					'transaksi_ongkir' => $this->input->post('ongkir'),
+					'transaksi_provinsi' => $this->input->post('provinsi'),
+					'transaksi_kota' => $this->input->post('kota'),
 					'transaksi_alamat_pengiriman' => $this->input->post('alamat'),
 				);
 

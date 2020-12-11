@@ -29,7 +29,7 @@
 											<h3>Pesanan</h3>
 
 											<div class="myaccount-table table-responsive text-center">
-												<table class="table table-bordered">
+												<table style="font-size: 12px;" class="table table-bordered">
 													<thead class="thead-light">
 													<tr>
 														<th>No</th>
